@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "pipelineVersion": "0.1.8",
+  "distributionModel": "managed-installer-cli",
+  "manifestDigest": "d8eee3fe8f3929e39a3556fcff4108556a67876d3cb7d0a3e15227122faa7f86",
+  "managedFiles": {
+    "opencode.json": {
+      "source": "opencode.json",
+      "kind": "opencode-config",
+      "status": "unchanged",
+      "sourceDigest": "a0e9e439d2aaff75761e4104e0b49396b7ed11bab5658633e727e0d6b768470d",
+      "installedDigest": "a0e9e439d2aaff75761e4104e0b49396b7ed11bab5658633e727e0d6b768470d"
+    },
+    "AGENTS.md": {
+      "source": "AGENTS.md",
+      "kind": "docs",
+      "status": "unchanged",
+      "sourceDigest": "92dd3a72ebb5da520e58d39c7ad436e222faaa70c52d4dbf434bf877d1c379dd",
+      "installedDigest": "92dd3a72ebb5da520e58d39c7ad436e222faaa70c52d4dbf434bf877d1c379dd"
+    },
+    ".opencode/rules/01-design-system-first.md": {
+      "source": ".opencode/rules/01-design-system-first.md",
+      "kind": "rule",
+      "status": "unchanged",
+      "sourceDigest": "ed8966459d53420a7e65c3b3434d9ac76e3c705adedaf62490d4c4d9ec9ee45b",
+      "installedDigest": "ed8966459d53420a7e65c3b3434d9ac76e3c705adedaf62490d4c4d9ec9ee45b"
+    },
+    ".opencode/rules/02-mcp-protocol.md": {
+      "source": ".opencode/rules/02-mcp-protocol.md",
+      "kind": "rule",
+      "status": "unchanged",
+      "sourceDigest": "0eb008dfd2b6e84bb2e80863bfb35bed69dc84cfdd1b8b0e3a8f6fe1ee34e334",
+      "installedDigest": "0eb008dfd2b6e84bb2e80863bfb35bed69dc84cfdd1b8b0e3a8f6fe1ee34e334"
+    },
+    ".opencode/rules/03-pipeline-transitions.md": {
+      "source": ".opencode/rules/03-pipeline-transitions.md",
+      "kind": "rule",
+      "status": "unchanged",
+      "sourceDigest": "2adfba2fd0f2632d33ce8ba7bbe468159f7375e74afcf17959abb4a60cf4d94e",
+      "installedDigest": "2adfba2fd0f2632d33ce8ba7bbe468159f7375e74afcf17959abb4a60cf4d94e"
+    },
+    ".opencode/rules/04-ai-builder-updates.md": {
+      "source": ".opencode/rules/04-ai-builder-updates.md",
+      "kind": "rule",
+      "status": "unchanged",
+      "sourceDigest": "bd773be8c98840ade9a6ffc3bbec55591ca488233ddc5abbb5ba3c13e6166bf1",
+      "installedDigest": "bd773be8c98840ade9a6ffc3bbec55591ca488233ddc5abbb5ba3c13e6166bf1"
+    },
+    ".opencode/rules/design-verifier-disabled-reference.md": {
+      "source": ".opencode/rules/design-verifier-disabled-reference.md",
+      "kind": "rule",
+      "status": "unchanged",
+      "sourceDigest": "d9048dc64267c8cb7893081ac50537485ce202c22b2d08f71166be98fd199c3f",
+      "installedDigest": "d9048dc64267c8cb7893081ac50537485ce202c22b2d08f71166be98fd199c3f"
+    },
+    ".opencode/agents/pipeline-orchestrator.md": {
+      "source": ".opencode/agents/pipeline-orchestrator.md",
+      "kind": "agent",
+      "status": "unchanged",
+      "sourceDigest": "8151ca808c7d72cf7137da84f16acea36a62026639658e3d8401bca91a3baaac",
+      "installedDigest": "8151ca808c7d72cf7137da84f16acea36a62026639658e3d8401bca91a3baaac"
+    },
+    ".opencode/agents/request-analyst.md": {
+      "source": ".opencode/agents/request-analyst.md",
+      "kind": "agent",
+      "status": "unchanged",
+      "sourceDigest": "49fc957938443af600c298299cd535b171372a6a772e0a618e84fb175fe2609e",
+      "installedDigest": "49fc957938443af600c298299cd535b171372a6a772e0a618e84fb175fe2609e"
+    },
+    ".opencode/agents/request-analyst-product.md": {
+      "source": ".opencode/agents/request-analyst-product.md",
+      "kind": "agent",
+      "status": "unchanged",
+      "sourceDigest": "f84291d7353b2565dc63c8d821b6ddd7d8f11dcc7e201f859d1090a4ff1cce06",
+      "installedDigest": "f84291d7353b2565dc63c8d821b6ddd7d8f11dcc7e201f859d1090a4ff1cce06"
+    },
+    ".opencode/agents/request-analyst-marketing.md": {
+      "source": ".opencode/agents/request-analyst-marketing.md",
+      "kind": "agent",
+      "status": "unchanged",
+      "sourceDigest": "1689218efb1c49e7e25c2e44c1d1f4e70e2d05409abbabc3e26d12a3ce49a87a",
+      "installedDigest": "1689218efb1c49e7e25c2e44c1d1f4e70e2d05409abbabc3e26d12a3ce49a87a"
+    },
+    ".opencode/agents/project-setup.md": {
+      "source": ".opencode/agents/project-setup.md",
+      "kind": "agent",
+      "status": "unchanged",
+      "sourceDigest": "656122dbf857fbb2e2af48d43d2e4d7ac96f1ba84bb13a2a36c26c311f40d116",
+      "installedDigest": "656122dbf857fbb2e2af48d43d2e4d7ac96f1ba84bb13a2a36c26c311f40d116"
+    },
+    ".opencode/agents/designer.md": {
+      "source": ".opencode/agents/designer.md",
+      "kind": "agent",
+      "status": "unchanged",
+      "sourceDigest": "9900379606de9e29687e72f34167007eb88f29039eb59d5faa7fca3d262aa4e6",
+      "installedDigest": "9900379606de9e29687e72f34167007eb88f29039eb59d5faa7fca3d262aa4e6"
+    },
+    ".opencode/agents/ui-coder.md": {
+      "source": ".opencode/agents/ui-coder.md",
+      "kind": "agent",
+      "status": "unchanged",
+      "sourceDigest": "eaa33d85ff0215b532c4d2cf318dbda7659d7b6be431c8cf96f77600b4eea9f2",
+      "installedDigest": "eaa33d85ff0215b532c4d2cf318dbda7659d7b6be431c8cf96f77600b4eea9f2"
+    },
+    ".opencode/agents/ui-tester.md": {
+      "source": ".opencode/agents/ui-tester.md",
+      "kind": "agent",
+      "status": "unchanged",
+      "sourceDigest": "0430b4afce21e4c0afe40f0a2acd401044bde4e9dfdb6f96d96135eb257af200",
+      "installedDigest": "0430b4afce21e4c0afe40f0a2acd401044bde4e9dfdb6f96d96135eb257af200"
+    },
+    ".opencode/agents/coder.md": {
+      "source": ".opencode/agents/coder.md",
+      "kind": "agent",
+      "status": "unchanged",
+      "sourceDigest": "da4ed69efdcbacf9d5ee1d98c3ee3b640ab08b1bcac85b6a9e5f44ba1b1a82f1",
+      "installedDigest": "da4ed69efdcbacf9d5ee1d98c3ee3b640ab08b1bcac85b6a9e5f44ba1b1a82f1"
+    },
+    ".opencode/agents/reviewer.md": {
+      "source": ".opencode/agents/reviewer.md",
+      "kind": "agent",
+      "status": "unchanged",
+      "sourceDigest": "27751fb8d344881dd79e2534d0136129a465c0fd3d043cd864b0f10cd7b23f27",
+      "installedDigest": "27751fb8d344881dd79e2534d0136129a465c0fd3d043cd864b0f10cd7b23f27"
+    },
+    ".opencode/agents/mcp-researcher.md": {
+      "source": ".opencode/agents/mcp-researcher.md",
+      "kind": "agent",
+      "status": "unchanged",
+      "sourceDigest": "9522b2ad7c035f4c34923f8f4e44032dd7cced8ac008397b97c0e381c85aa320",
+      "installedDigest": "9522b2ad7c035f4c34923f8f4e44032dd7cced8ac008397b97c0e381c85aa320"
+    },
+    ".opencode/agents/tester.md": {
+      "source": ".opencode/agents/tester.md",
+      "kind": "agent",
+      "status": "unchanged",
+      "sourceDigest": "6bfc7c69e567dff1f1996da83dd04f715ed6850c86e6a7f6e085e42de6f91312",
+      "installedDigest": "6bfc7c69e567dff1f1996da83dd04f715ed6850c86e6a7f6e085e42de6f91312"
+    },
+    "docs/specs/pipeline-state.yaml": {
+      "source": "docs/specs/pipeline-state.yaml",
+      "kind": "state-template",
+      "status": "unchanged",
+      "sourceDigest": "34677aa8ab4057c380429f6044a6ff1b1b6353232ce948ace5d0e138bde132a6",
+      "installedDigest": "34677aa8ab4057c380429f6044a6ff1b1b6353232ce948ace5d0e138bde132a6"
+    }
+  },
+  "managedDirectories": [
+    "docs/specs/mcp-research"
+  ],
+  "sync": {
+    "roo": {
+      "status": "skipped",
+      "configPath": null,
+      "configSource": "n/a",
+      "bundlePath": null,
+      "modeDigests": {},
+      "modeApiConfigDigests": {}
+    },
+    "mcp": {
+      "status": "pending_mcp_sync",
+      "configPath": "C:\\Users\\MDYakovleva\\AppData\\Roaming\\Code\\User\\globalStorage\\rooveterinaryinc.roo-cline\\settings\\mcp_settings.json",
+      "configSource": "auto",
+      "fragmentPath": "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\mcp.json",
+      "serverDigests": {
+        "prod-design-system-http": "7a148180d63577bd847c1a34c19168131347ed77d3a1d4af37a6d28b87bec547",
+        "local-design-system-http": "a19fa72b6ef22b351753ab20165c2390fb62f51d387a9cc8217692dbfded044c",
+        "chrome-devtools-mcp": "3ecf9a3560284f283e8a92e15d8e8a597e806a8516b5b0380fd22387563b2ec1"
+      }
+    }
+  },
+  "userOwnedPaths": [
+    "README.md",
+    "docs/specs/spec.md",
+    "docs/specs/design-spec.md",
+    "docs/specs/design-scratchpad.md",
+    "docs/specs/user-scenarios.json",
+    "src/"
+  ],
+  "installedAt": "2026-05-15T10:04:20.398Z",
+  "lastBackupId": "20260515T100420Z",
+  "notes": {
+    "roo": "OpenCode distribution does not merge RooCode settings; lock field remains for schema compatibility.",
+    "mcp": "Only allowlisted pipeline server ids are synced automatically.",
+    "editorAutoImport": "OpenCode CLI does not modify editor user settings (no Roo auto-import wiring)."
+  }
+}

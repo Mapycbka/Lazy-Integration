@@ -1,0 +1,35 @@
+{
+  "backupId": "20260515T100420Z",
+  "createdAt": "2026-05-15T10:04:20.405Z",
+  "snapshots": [
+    {
+      "originalPath": "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\docs\\specs\\opencode-pipeline.lock.json",
+      "backupPath": "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode-pipeline\\backups\\20260515T100420Z\\blobs\\0.json"
+    },
+    {
+      "originalPath": "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\README.md",
+      "backupPath": "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode-pipeline\\backups\\20260515T100420Z\\blobs\\1.md"
+    }
+  ],
+  "createdPaths": [
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\eslint.config.js",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\index.html",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\npmrc.example",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\package-lock.json",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\package.json",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\public\\vite.svg",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\src\\App.scss",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\src\\App.test.tsx",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\src\\App.tsx",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\src\\assets\\react.svg",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\src\\index.scss",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\src\\main.tsx",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\src\\smoke.test.tsx",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\src\\test\\setup.ts",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\tsconfig.app.json",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\tsconfig.json",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\tsconfig.node.json",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\Vimpelcom-InternalCA-G2-G3.pem",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\vite.config.ts"
+  ]
+}

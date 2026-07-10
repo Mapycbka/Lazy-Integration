@@ -1,0 +1,376 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "pipeline-orchestrator",
+  "agent": {
+    "pipeline-orchestrator": {
+      "description": "Единая точка входа OpenCode Pipeline: автоматически запускает stage agents, проверяет артефакты и ведёт pipeline-state без ручного переключения режимов.",
+      "mode": "primary",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "edit": "allow",
+        "bash": {
+          "*": "allow",
+          "git status*": "allow",
+          "npx --yes @beeline/yellowbe-opencode-pipeline@latest check-update*": "allow",
+          "npx --yes @beeline/yellowbe-opencode-pipeline@latest safe-update*": "allow",
+          "*yellowbe-opencode-pipeline.mjs check-update*": "allow",
+          "*yellowbe-opencode-pipeline.mjs safe-update*": "allow",
+          "npm run*": "allow",
+          "npm install*": "allow",
+          "npx tsc*": "allow",
+          "npx vitest*": "allow",
+          "git push*": "deny",
+          "rm *": "deny"
+        },
+        "task": {
+          "*": "deny",
+          "request-analyst": "allow",
+          "request-analyst-product": "allow",
+          "request-analyst-marketing": "allow",
+          "project-setup": "allow",
+          "designer": "allow",
+          "ui-coder": "allow",
+          "ui-tester": "allow",
+          "coder": "allow",
+          "reviewer": "allow",
+          "tester": "allow",
+          "mcp-researcher": "allow"
+        },
+        "webfetch": "allow",
+        "websearch": "allow",
+        "prod-design-system-http_*": "allow",
+        "prod_design_system_http_*": "allow",
+        "local-design-system-http_*": "allow",
+        "local_design_system_http_*": "allow",
+        "chrome-devtools-mcp_*": "allow",
+        "chrome_devtools_mcp_*": "allow"
+      }
+    },
+    "request-analyst": {
+      "description": "Лёгкий входной режим: выбирает трек `product` или `marketing`, обновляет pipeline-state и маршрутизирует задачу дальше.",
+      "mode": "subagent",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "edit": "allow",
+        "bash": {
+          "*": "deny"
+        },
+        "task": {
+          "*": "deny"
+        },
+        "webfetch": "allow",
+        "websearch": "allow"
+      }
+    },
+    "request-analyst-product": {
+      "description": "Product/app аналитика: hub `spec.md` + `spec-chunk-{N}.md` для app/process-heavy задач.",
+      "mode": "subagent",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "edit": "allow",
+        "bash": {
+          "*": "deny"
+        },
+        "task": {
+          "*": "deny"
+        },
+        "webfetch": "allow",
+        "websearch": "allow"
+      }
+    },
+    "request-analyst-marketing": {
+      "description": "Marketing/landing аналитика: hub `spec.md` + `spec-chunk-{N}.md`, messaging и content matrix.",
+      "mode": "subagent",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "edit": "allow",
+        "bash": {
+          "*": "deny"
+        },
+        "task": {
+          "*": "deny"
+        },
+        "webfetch": "allow",
+        "websearch": "allow"
+      }
+    },
+    "project-setup": {
+      "description": "Инициализация или валидация проекта и подготовка окружения перед следующим этапом пайплайна.",
+      "mode": "subagent",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "edit": "allow",
+        "bash": {
+          "*": "allow",
+          "git status*": "allow",
+          "npm run*": "allow",
+          "npm install*": "allow",
+          "npx tsc*": "allow",
+          "npx vitest*": "allow",
+          "git push*": "deny",
+          "rm *": "deny"
+        },
+        "task": {
+          "*": "deny"
+        },
+        "webfetch": "allow",
+        "websearch": "allow"
+      }
+    },
+    "designer": {
+      "description": "UI/UX на Beeline DS: hub `design-spec.md` + `design-spec-chunk-{N}.md`, scratchpad hub/chunk, `user-scenarios.json`, DQG.",
+      "mode": "subagent",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "edit": "allow",
+        "bash": {
+          "*": "deny"
+        },
+        "task": {
+          "*": "deny",
+          "mcp-researcher": "allow"
+        },
+        "webfetch": "allow",
+        "websearch": "allow",
+        "prod-design-system-http_*": "allow",
+        "prod_design_system_http_*": "allow",
+        "local-design-system-http_*": "allow",
+        "local_design_system_http_*": "allow"
+      }
+    },
+    "ui-coder": {
+      "description": "React/TS на Beeline DS: hub+chunk spec/design, код и тесты, `implementation-chunk-{N}.md`, build и devtools loop.",
+      "mode": "subagent",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "edit": "allow",
+        "bash": {
+          "*": "allow",
+          "git status*": "allow",
+          "npm run*": "allow",
+          "npm install*": "allow",
+          "npx tsc*": "allow",
+          "npx vitest*": "allow",
+          "git push*": "deny",
+          "rm *": "deny"
+        },
+        "task": {
+          "*": "deny",
+          "mcp-researcher": "allow"
+        },
+        "webfetch": "allow",
+        "websearch": "allow",
+        "prod-design-system-http_*": "allow",
+        "prod_design_system_http_*": "allow",
+        "local-design-system-http_*": "allow",
+        "local_design_system_http_*": "allow",
+        "chrome-devtools-mcp_*": "allow",
+        "chrome_devtools_mcp_*": "allow"
+      }
+    },
+    "ui-tester": {
+      "description": "Визуальная и a11y-проверка UI через browser/devtools на 375 / 768 / 1440.",
+      "mode": "subagent",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "edit": "allow",
+        "bash": {
+          "*": "allow",
+          "git status*": "allow",
+          "npm run*": "allow",
+          "npm install*": "allow",
+          "npx tsc*": "allow",
+          "npx vitest*": "allow",
+          "git push*": "deny",
+          "rm *": "deny"
+        },
+        "task": {
+          "*": "deny"
+        },
+        "webfetch": "allow",
+        "websearch": "allow",
+        "chrome-devtools-mcp_*": "allow",
+        "chrome_devtools_mcp_*": "allow"
+      }
+    },
+    "coder": {
+      "description": "Бизнес-логика: API, hooks, stores, валидация, замена типизированных UI-заглушек.",
+      "mode": "subagent",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "edit": "allow",
+        "bash": {
+          "*": "allow",
+          "git status*": "allow",
+          "npm run*": "allow",
+          "npm install*": "allow",
+          "npx tsc*": "allow",
+          "npx vitest*": "allow",
+          "git push*": "deny",
+          "rm *": "deny"
+        },
+        "task": {
+          "*": "deny"
+        },
+        "webfetch": "allow",
+        "websearch": "allow",
+        "prod-design-system-http_*": "allow",
+        "prod_design_system_http_*": "allow",
+        "local-design-system-http_*": "allow",
+        "local_design_system_http_*": "allow"
+      }
+    },
+    "reviewer": {
+      "description": "Код-ревью: spec compliance, DS compliance, build/type/lint checks, tests и rework routing.",
+      "mode": "subagent",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "edit": "allow",
+        "bash": {
+          "*": "allow",
+          "git status*": "allow",
+          "npm run*": "allow",
+          "npm install*": "allow",
+          "npx tsc*": "allow",
+          "npx vitest*": "allow",
+          "git push*": "deny",
+          "rm *": "deny"
+        },
+        "task": {
+          "*": "deny",
+          "mcp-researcher": "allow"
+        },
+        "webfetch": "allow",
+        "websearch": "allow",
+        "prod-design-system-http_*": "allow",
+        "prod_design_system_http_*": "allow",
+        "local-design-system-http_*": "allow",
+        "local_design_system_http_*": "allow"
+      }
+    },
+    "mcp-researcher": {
+      "description": "Служебный helper-режим для пакетного DS discovery: собирает MCP-данные, консолидирует их и пишет research-артефакт.",
+      "mode": "subagent",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "edit": "allow",
+        "bash": {
+          "*": "deny"
+        },
+        "task": {
+          "*": "deny"
+        },
+        "webfetch": "allow",
+        "websearch": "allow",
+        "prod-design-system-http_*": "allow",
+        "prod_design_system_http_*": "allow",
+        "local-design-system-http_*": "allow",
+        "local_design_system_http_*": "allow"
+      }
+    },
+    "tester": {
+      "description": "Финальный QA: test plan, unit/component/e2e tests, coverage и bugs report.",
+      "mode": "subagent",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "edit": "allow",
+        "bash": {
+          "*": "allow",
+          "git status*": "allow",
+          "npm run*": "allow",
+          "npm install*": "allow",
+          "npx tsc*": "allow",
+          "npx vitest*": "allow",
+          "git push*": "deny",
+          "rm *": "deny"
+        },
+        "task": {
+          "*": "deny"
+        },
+        "webfetch": "allow",
+        "websearch": "allow",
+        "chrome-devtools-mcp_*": "allow",
+        "chrome_devtools_mcp_*": "allow"
+      }
+    }
+  },
+  "mcp": {
+    "pixso-remote-mcp": {
+      "type": "remote",
+      "url": "https://pixso-test.apps.yd-m6-kt22.vimpelcom.ru/api/mcp/mcp",
+      "headers": {
+        "Token": "MnwzMXxiMWEwZmQ1Yw"
+      }
+    },
+    "prod-design-system-http": {
+      "type": "remote",
+      "url": "https://mcp-yellowbe.apps.yd-m6-kt22.vimpelcom.ru/sse",
+      "enabled": true
+    },
+    "chrome-devtools-mcp": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ],
+      "enabled": true
+    }
+  },
+  "permission": {
+    "read": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "edit": "allow",
+    "bash": {
+      "*": "allow",
+      "git push*": "deny"
+    },
+    "task": {
+      "*": "allow"
+    },
+    "prod-design-system-http_*": "allow",
+    "prod_design_system_http_*": "allow",
+    "local-design-system-http_*": "allow",
+    "local_design_system_http_*": "allow",
+    "chrome-devtools-mcp_*": "allow",
+    "chrome_devtools_mcp_*": "allow"
+  }
+}

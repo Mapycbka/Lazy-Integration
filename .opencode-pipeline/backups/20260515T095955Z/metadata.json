@@ -1,0 +1,28 @@
+{
+  "backupId": "20260515T095955Z",
+  "createdAt": "2026-05-15T09:59:55.375Z",
+  "snapshots": [],
+  "createdPaths": [
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\opencode.json",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\AGENTS.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\rules\\01-design-system-first.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\rules\\02-mcp-protocol.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\rules\\03-pipeline-transitions.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\rules\\04-ai-builder-updates.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\rules\\design-verifier-disabled-reference.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\agents\\pipeline-orchestrator.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\agents\\request-analyst.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\agents\\request-analyst-product.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\agents\\request-analyst-marketing.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\agents\\project-setup.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\agents\\designer.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\agents\\ui-coder.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\agents\\ui-tester.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\agents\\coder.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\agents\\reviewer.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\agents\\mcp-researcher.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\.opencode\\agents\\tester.md",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\docs\\specs\\pipeline-state.yaml",
+    "C:\\Users\\MDYakovleva\\Documents\\Lazy Integration\\docs\\specs\\opencode-pipeline.lock.json"
+  ]
+}

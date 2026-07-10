@@ -1,0 +1,166 @@
+# Состояние конвейера OpenCode Pipeline (единый источник правды для orchestrator-а, чанка, stage-agent-а и итераций).
+# Путь в проекте: docs/specs/pipeline-state.yaml
+# Допустима копия с тем же содержимым: docs/specs/pipeline-state.json (те же ключи верхнего уровня).
+
+# Идентификатор задачи — как в **Мета → ID** в hub spec.md (например TASK-2026-042 или короткий slug).
+request_id: ""
+
+# Какой специализированный аналитик должен работать с задачей после роутера:
+# product | marketing | null
+analysis_mode: null
+
+# Глубина инженерной проверки, выбранная на входе и уточняемая только при новом evidence:
+# lean | product | hardened | null
+# Default без явного риска: marketing -> lean, product -> product.
+# Если есть платежи, KYC, договоры, роли/доступы или персональные данные -> hardened,
+# либо нужен явный risk_acceptance.profile_downgrade.
+quality_profile: null
+
+# Источник дизайна для маршрутизации designer/ui-coder:
+# generative | reference_static | structured_mcp | null
+# generative — пайплайн проектирует UI сам; reference_static — скрины/PDF/экспорт;
+# structured_mcp — Pixso/Figma-аналог через MCP. При fallback не менять молча:
+# фиксировать причину в blockers/risks и design_input_fallback.
+design_input: null
+
+# Артефакты источника дизайна. Orchestrator и designer используют это для выбора
+# full generative / shortened reference formalization / structured MCP skeleton.
+design_input_artifacts: []
+# Пример:
+# - path_or_ref: "docs/assets/reference-home.png"
+#   kind: screenshot        # screenshot | pdf | pixso_frame | mcp_frame | other
+#   coverage: desktop       # desktop | tablet | mobile | flow | unknown
+
+# Явный fallback источника дизайна, если structured MCP недоступен или неполон.
+design_input_fallback:
+  from: ""                  # structured_mcp | reference_static | generative | ""
+  to: ""                    # reference_static | generative | ""
+  reason: ""
+
+# Явное принятие риска человеком/оператором. Особенно важно для hardened задач:
+# нельзя молча понижать профиль или принимать результат после лимита итераций.
+risk_acceptance:
+  profile_downgrade: false
+  result_after_iteration_limit: false
+  reason: ""
+  approved_by: ""
+
+# Активный chunk (1, 2, …). Соответствует spec-chunk-N / design-spec-chunk-N. Один экран без декомпозиции — 1. При отсутствии чанков в ТЗ: null.
+current_chunk: 1
+
+# Итерации цикла UI Тестировщик → UI Coder при rejected (0…3; инкремент при каждом возврате к ui-coder по замечаниям UI).
+iteration_ui: 0
+
+# Итерации цикла Reviewer → designer / ui-coder / coder при rejected (0…3).
+iteration_review: 0
+
+# Зарезервировано под цикл Design Verifier → designer (0…3), если agent снова включён в opencode.json. При отключённом design-verifier не инкрементируется.
+iteration_design_verify: 0
+
+# Итерации возврата tester → request-analyst при critical bugs (0…2).
+iteration_critical_bug_reentry: 0
+
+# Slug последнего активного основного agent-а OpenCode (request-analyst, request-analyst-product,
+# request-analyst-marketing, project-setup, designer, ui-coder, ui-tester, coder, reviewer, tester).
+last_mode: ""
+
+# Статус OpenCode-native orchestrator-а:
+# idle | running | blocked | done
+orchestrator_status: idle
+
+# Stage, который сейчас выполняется orchestrator-ом, или пусто.
+# Один из: request-analyst, request-analyst-product, request-analyst-marketing, project-setup,
+# designer, ui-coder, ui-tester, coder, reviewer, tester
+active_stage: ""
+
+# Следующий stage, выбранный orchestrator-ом после последнего stage_result.
+# Значение done означает завершённый pipeline; пусто — пока не определено.
+next_agent: ""
+
+# Краткий итог последнего stage_result для восстановления контекста после перезапуска сессии.
+last_stage_result:
+  status: ""       # done | blocked | needs_user | rejected
+  stage: ""
+  summary: ""
+  artifact_paths: []
+  next_agent: ""
+  quality_profile: null
+  design_input: null
+
+# Канонические артефакты оркестратора. Поля optional/backward-compatible:
+# если старый stage их не заполнил, orchestrator дополняет по факту текущего хода.
+canonical_artifacts:
+  spec_hub: "docs/specs/spec.md"
+  design_hub: "docs/specs/design-spec.md"
+  ui_implementation_brief: "docs/specs/ui-implementation-brief.md"
+  design_scratchpad_hub: "docs/specs/design-scratchpad.md"
+  # Последний момент, когда orchestrator подтвердил синтез перед переходом к реализации UI.
+  last_synthesis_at: ""
+
+# Состояние lock-in перед `ui-coder`.
+ui_intent_lock:
+  # pending | locked | not_applicable
+  status: pending
+  # Канонический pointer на brief; по умолчанию совпадает с canonical_artifacts.ui_implementation_brief
+  artifact_path: "docs/specs/ui-implementation-brief.md"
+  # Файлы, прочитанные orchestrator-ом перед lock-in решением
+  files_read: []
+  # ISO-8601 времени последней проверки lock-in
+  checked_at: ""
+  # Краткий статус последнего синтеза (ok | stale_inputs | conflicts_resolved | blocked | "")
+  last_synthesis_status: ""
+  # Ноты по разрешению конфликтов hub/chunk/scratchpad
+  conflict_resolution_notes: []
+
+# Решения orchestrator-а для аудита (append-only, кратко).
+# Пример:
+# - at: "2026-05-07T13:21:11Z"
+#   stage: "pipeline-orchestrator"
+#   decision: "route_to_ui_coder"
+#   reason: "ui_intent_lock=locked"
+#   evidence:
+#     files_read: ["docs/specs/spec.md", "docs/specs/design-spec.md"]
+#     lock_artifact: "docs/specs/ui-implementation-brief.md"
+decision_log: []
+
+# Последний helper-agent, который вызывался через Task / @mcp-researcher. Для on-demand MCP helper по умолчанию:
+# mcp-researcher | ""
+last_helper_mode: ""
+
+# Путь к последнему актуальному research-артефакту helper-а. Обычно:
+# docs/specs/mcp-research/chunk-<N>-<consumer>.md
+# Если последний helper вернул partial/blocked, следующий consumer обязан перечитать этот файл перед повторным Task / @mcp-researcher
+latest_mcp_research_artifact: ""
+
+# Что блокирует прогресс (строки; пустой список = нет блокеров).
+blockers: []
+# Примеры:
+# - "Нет ответа заказчика по сценарию оплаты"
+# - "MCP design-system недоступен"
+
+# --- AI Builder (доставка пайплайна): проверка обновлений без привязки к переходам между этапами графа ---
+# Политика UX: 1 = тихая проверка; 2 = мягкое уведомление; 3 = авто-применение при отсутствии конфликтов managed-файлов.
+# См. .opencode/rules/04-ai-builder-updates.md
+ai_builder:
+  update_policy_level: 2
+  # ISO-8601 последней активности пользователя в этом проекте (оркестратор обновляет на границе пользовательского хода).
+  last_user_activity_at: ""
+  # ISO-8601 последней успешной проверки версии (registry dist-tags.latest vs lock.pipelineVersion).
+  last_update_check_at: ""
+  # up_to_date | update_available | failed | skipped_timeout | no_lock | "" если ещё не проверяли
+  last_update_check_status: ""
+  # Последняя известная версия из registry при успешном ответе (строка semver пакета).
+  published_latest_seen: ""
+  # ISO-8601: до этого момента не показывать уведомление об обновлении (ответ пользователя «не сегодня»).
+  notify_snooze_until: ""
+  # Интервалы (часы): минимум между фоновыми проверками; порог «вернулись после простоя».
+  check_interval_hours: 12
+  idle_resume_hours: 8
+  # Ограничение явных запросов «проверь обновление»: не чаще одного раза в минуту на проект в одной сессии (ISO-8601 последнего форсированного запроса).
+  session_forced_check_at: ""
+
+# --- Опционально: уверенность анализа (см. spec.md → «Уверенность анализа», request-analyst-product / request-analyst-marketing) ---
+# Минимум из трёх блоков requirements / flows / validation (0–1). Если < порога в spec (например 0.75) — см. blockers / risks в spec.
+confidence_min: null
+# Список ID блоков с confidence ниже порога, например: ["flows", "validation"]
+confidence_below_threshold: []
